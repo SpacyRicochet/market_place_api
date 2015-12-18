@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Api gems
+gem 'active_model_serializers'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
@@ -44,6 +47,4 @@ group :development do
   gem 'sqlite3'
 end
 
-# Api gems
-gem 'active_model_serializers'
 gem 'devise'
