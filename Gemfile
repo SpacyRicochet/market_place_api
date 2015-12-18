@@ -30,6 +30,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -45,4 +46,4 @@ end
 
 # Api gems
 gem 'active_model_serializers'
-gem "devise"
+gem 'devise'
