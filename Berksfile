@@ -1,8 +1,10 @@
-site "http://community.opscode.com/api/v1"
+site :opscode
 
 cookbook 'apt'
 cookbook 'build-essential'
+cookbook 'nginx'
 cookbook 'ruby_build'
 cookbook 'nodejs'
 cookbook 'rbenv', git: 'https://github.com/aminin/chef-rbenv'
 cookbook 'postgresql', '~> 3.4.24'
+cookbook 'git'
