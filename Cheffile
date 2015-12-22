@@ -1,4 +1,4 @@
-site :opscode
+site "http://community.opscode.com/api/v1"
 
 cookbook 'apt'
 cookbook 'build-essential'
