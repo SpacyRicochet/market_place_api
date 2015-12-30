@@ -17,9 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Use Chef Solo to provision our virtual machine
   config.vm.provision :chef_solo do |chef|
-    # The following is not necessary because we use berkshelf
     chef.cookbooks_path = ["cookbooks"]
-
+    
     chef.add_recipe "apt"
     chef.add_recipe "build-essential"
     chef.add_recipe "nginx"
@@ -50,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         password: {
           postgres: '123456'
         }
-      },
-    }
+      }
+     }
   end
 end
