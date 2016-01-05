@@ -17,10 +17,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-#Api gems
-gem 'active_model_serializers'
-
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -30,10 +26,14 @@ gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Api gems
+gem 'active_model_serializers'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -47,3 +47,4 @@ group :development do
   gem 'sqlite3'
 end
 
+gem 'devise'

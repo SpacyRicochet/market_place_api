@@ -18,14 +18,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use Chef Solo to provision our virtual machine
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks"]
-
+    
     chef.add_recipe "apt"
+    chef.add_recipe "build-essential"
+    chef.add_recipe "nginx"
     chef.add_recipe "ruby_build"
     chef.add_recipe "nodejs"
     chef.add_recipe "rbenv::user"
     chef.add_recipe "rbenv::vagrant"
     chef.add_recipe "postgresql::server"
     chef.add_recipe "postgresql::client"
+    chef.add_recipe "git"
 
     # Install Ruby 2.2.1 and Bundler
     # Use empty password for postgresql to make things easy
@@ -46,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         password: {
           postgres: '123456'
         }
-      },
-    }
+      }
+     }
   end
 end
