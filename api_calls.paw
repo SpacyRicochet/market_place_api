@@ -84,7 +84,7 @@
     </object>
     <object type="LMREQUEST" id="z105">
         <attribute name="uuid" type="string">F77FE097-49A9-4F5B-8F41-8E71BAD45F84</attribute>
-        <attribute name="url" type="string">api.marketplaceapi.dev/users/1</attribute>
+        <attribute name="url" type="string">api.marketplaceapi.dev/users/2</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -95,7 +95,7 @@
         <attribute name="name" type="string">My API</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z109 z102"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z102 z109"></relationship>
     </object>
     <object type="LMENVIRONMENTVARIABLE" id="z106">
         <attribute name="uuid" type="string">4B90881A-F778-4612-8B91-6174FC4249DF</attribute>
