@@ -97,4 +97,19 @@ describe Api::V1::UsersController do
   	
   	it { should respond_with 204 }
   end
+  
+  describe "#products association do" do
+  	before do
+			@user = FactoryGirl.create :user  		
+			3.times { FactoryGirl.create :product, user: @user }
+  	end
+  	
+  	it "destroys the associated products on self destruct" do
+  		products = @user.products
+  		@user.destroy
+  		products.each do |product|
+  			expect(Product.find(product)).to raise_error ActiveRecord::RecordNotFound
+  		end
+  	end
+  end
 end
