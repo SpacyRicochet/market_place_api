@@ -3,17 +3,38 @@ require 'spec_helper'
 describe Api::V1::UsersController do
 
   describe "GET #show" do
-    before(:each) do 
-      @user = FactoryGirl.create :user
-      get :show, id: @user.id
-    end
+  	context "shows user successfully" do
+			before(:each) do 
+				@user = FactoryGirl.create :user
+				get :show, id: @user.id
+			end
 
-    it "returns the information about a reporter on a hash" do
-      user_response = json_response
-      expect(user_response[:email]).to eql @user.email
-    end
+			it "returns the information about a reporter on a hash" do
+				user_response = json_response
+				expect(user_response[:email]).to eql @user.email
+			end
 
-    it { should respond_with 200 }
+			it { should respond_with 200 }
+		end
+		
+		# too advanced at the moment
+# 		context "cannot find user" do
+# 			before(:each) do
+# 				get :show, id: 1
+# 			end
+# 			
+# 			it "renders an errors json" do
+# 				user_response = json_response
+# 				expect(user_response).to have_key(:errors)
+# 			end
+# 			
+# 			it "renders the json errors on why the user could not be created" do
+# 				user_response = json_response
+# 				expect(user_response[:errors][:reason]).to include "user not found"
+# 			end
+# 			
+# 			it { should respond_with 404 }
+# 		end
   end
   
   describe "POST #create" do
@@ -96,5 +117,20 @@ describe Api::V1::UsersController do
   	end
   	
   	it { should respond_with 204 }
+  end
+  
+  describe "#products association do" do
+  	before do
+			@user = FactoryGirl.create :user  		
+			3.times { FactoryGirl.create :product, user: @user }
+  	end
+  	
+  	it "destroys the associated products on self destruct" do
+  		products = @user.products
+  		@user.destroy
+  		products.each do |product|
+  			expect(Product.find(product)).to raise_error ActiveRecord::RecordNotFound
+  		end
+  	end
   end
 end
