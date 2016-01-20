@@ -81,6 +81,9 @@ GEM
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.3)
@@ -189,6 +192,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   jbuilder (~> 2.0)
+  kaminari
   rails (= 4.2.5)
   rspec-rails (~> 2.14)
   sass-rails (~> 5.0)
