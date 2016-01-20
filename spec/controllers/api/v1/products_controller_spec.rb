@@ -24,10 +24,13 @@ describe Api::V1::ProductsController do
 	describe "GET #index" do
 		before(:each) do
 			4.times { FactoryGirl.create :product }
-			get :index
 		end
 		
 		context "when is not receiving any product_ids parameter" do
+			before(:each) do
+				get :index
+			end
+			
 			it "returns 4 records from the database" do 
 				products_response = json_response[:products]
 				expect(products_response.size).to eq(4)
@@ -39,11 +42,17 @@ describe Api::V1::ProductsController do
 					expect(product_response[:user]).to be_present
 				end
 			end
+			
+			it { expect(json_response).to have_key(:meta) }
+			it { expect(json_response[:meta]).to have_key(:pagination) }
+			it { expect(json_response[:meta][:pagination]).to have_key(:per_page) }
+			it { expect(json_response[:meta][:pagination]).to have_key(:total_pages) }
+			it { expect(json_response[:meta][:pagination]).to have_key(:total_objects) }
 		
 			it { should respond_with 200 }
 		end
 		
-		context "when product_ids paramter is sent" do
+		context "when product_ids parameter is sent" do
       before(:each) do
         @user = FactoryGirl.create :user
         3.times { FactoryGirl.create :product, user: @user }
