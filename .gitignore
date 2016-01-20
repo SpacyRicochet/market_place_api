@@ -18,6 +18,4 @@
 
 # Ignore the vagrant directory (created by `vagrant up`)
 /.vagrant
-
-# Ignore cookbooks, since you can create these again with the Cheffile.
-/cookbooks
+.DS_Store
